@@ -17,10 +17,10 @@ import { MessagesModule } from './messages/messages.module';
       playground: true,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       subscriptions: {
-        'graphql-ws': true,
+        'graphql-ws': true, // enable subscriptions
       },
     }),
-    MessagesModule,
+    MessagesModule, // import the module
   ],
   controllers: [AppController],
   providers: [AppService],

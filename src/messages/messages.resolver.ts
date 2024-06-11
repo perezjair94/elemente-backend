@@ -18,6 +18,7 @@ const pubSub = new PubSub();
 export class MessagesResolver {
   constructor(private readonly messagesService: MessagesService) {}
 
+  // create a new message
   @Mutation(() => Message)
   async createMessage(
     @Args('createMessageInput') createMessageInput: CreateMessageInput,
@@ -27,6 +28,7 @@ export class MessagesResolver {
     return message;
   }
 
+  // find all messages
   @Query(() => [Message], { name: 'messages' })
   async findAll() {
     return this.messagesService.findAll();
@@ -52,11 +54,13 @@ export class MessagesResolver {
     return this.messagesService.remove(id);
   }
 
+  // find all messages by room
   @Query(() => [Message], { name: 'messagesByRoom' })
   async findAllByRoom(@Args('room') room: string) {
     return this.messagesService.findAllByRoom(room);
   }
 
+  // subscriptions to messages added to a room
   @Subscription(() => Message, {
     name: 'messageAdded',
     filter: (payload, varibales) =>

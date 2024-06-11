@@ -6,7 +6,7 @@ import { Message, MessageSchema } from 'src/schemas/message.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Message.name, schema: MessageSchema }]),
+    MongooseModule.forFeature([{ name: Message.name, schema: MessageSchema }]), // import the schema
   ],
   providers: [MessagesResolver, MessagesService],
 })
