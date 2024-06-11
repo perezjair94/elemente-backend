@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Message {
+  _id: ID!
+  sender: String!
+  content: String!
+  room: String!
+}
+
+type Query {
+  messages: [Message!]!
+  message(id: Int!): Message!
+  messagesByRoom(room: String!): [Message!]!
+}
+
+type Mutation {
+  createMessage(createMessageInput: CreateMessageInput!): Message!
+  updateMessage(updateMessageInput: UpdateMessageInput!): Message!
+  removeMessage(id: Int!): Message!
+}
+
+input CreateMessageInput {
+  sender: String!
+  content: String!
+  room: ID!
+}
+
+input UpdateMessageInput {
+  sender: String
+  content: String
+  room: ID
+  id: Int!
+}
+
+type Subscription {
+  messageAdded(room: String!): Message!
+}
